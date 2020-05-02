@@ -1,0 +1,115 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+#header {
+  /* Temprory Styling */
+  border: 2px solid black;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+#container {
+  margin-top: 20px;
+}
+
+/************************** Session Styling ************************/
+
+.session {
+  font-weight: bold;
+  /* background-color: lightgray; */
+  padding: 10px;
+  /* margin-bottom: 30px; */
+  /* background-color: red; */
+}
+
+.session-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.session-links {
+  margin-right: 10px;
+  font-size: 26px; 
+  font-weight: 300;
+  color: gray;
+  /* width: 0px; */
+  /* background-color: white; */
+  /* color: black; */
+  border: none;
+  text-decoration: none;
+  /* white-space: nowrap; */
+}
+
+.session-name {
+  border: none;
+/* text-align: center; */
+  /* color: lightgray; */
+  font-size: 26px;
+  font-weight: 200;
+  /* padding: .5em; */
+}
+
+/************************** Links Styling ************************/
+
+.link {
+  font-size: 15px;
+  /* padding-top: 15px; */
+  color: #234da7;
+  font-weight: 500;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.link-base {
+  display: flex;
+  align-items: center;
+  /* background-color: blue; */
+  height: 10px;
+}
+
+.link-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  /* background-color: yellow; */
+  /* width: 100px; */
+  /* margin-bottom: 10px; */
+  padding-left: 10px;
+  /* border: solid black 1px; */
+  /* padding: 10px; */
+  /* margin: 10px; */
+  /* justify-content: center; */
+}
+
+.remove-button {
+  color: gray;
+  /* position: absolute; */
+  /* right: 99.35%; */
+  margin-right: 10px;
+}
+
+.session-restore {
+  color: blue;
+  cursor: pointer;
+}
+
+.session-delete {
+  color: red;
+  cursor: pointer;
+}
+
+.session-date {
+  color: lightgray ;
+}
+
+/* Extend to left */
+/* Match height of .link-base */
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
