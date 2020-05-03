@@ -47,7 +47,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 				}
 			}
 
-			session = [session, get_time(), '', `${session.length} tabs`]
+			session = [session, get_time(), '', `${session.length} tab${session.length != 1 ? "s" : ""}`]
 
 			chrome.storage.local.get({
 				'key': []
@@ -67,3 +67,19 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 		})
 	});
 });
+
+//open taba when opening chrome
+
+// chrome.windows.onCreated.addListener(function (window) {
+// 	let tab_info = {
+// 		"url": "index.html",
+// 		"index": 0
+		
+// 	}
+// 	chrome.tabs.create(tab_info)
+// 	chrome.tabs.query({currentWindow: true}, function(tabs) {
+// 		chrome.tabs.update(tabs[0].id, {
+// 			selected: true
+// 		})
+// 	});
+// });

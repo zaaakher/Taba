@@ -16,7 +16,7 @@
        }
     ],
     "browser_action": {},
-    "permissions": ["tabs", "storage", "debugger"],
+    "permissions": ["tabs", "storage", "windows"],
     "content_security_policy":"script-src 'self' https://momentjs.com/downloads/moment.min.js; object-src 'self'"
     
 }

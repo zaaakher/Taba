@@ -20,6 +20,8 @@ Things to fix:
 - Pinned tabs prevent collection
 - Some HTML is present in other sites after closing the holder
 - When refreshing(programmatically) retain scroll value
+- Strip input
+- Slowness in restore all
 
 Things to improve code reading:
 

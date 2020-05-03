@@ -167,17 +167,18 @@ chrome.storage.local.get({
 		//if session ?
 		if (session.length > 0) {
 			//Create session elements
-			let session_div = document.createElement("div");
-			let session_header = document.createElement("div");
+			let session_div = document.createElement("div"); //Holds everything in a session
+			let session_header = document.createElement("div"); //Holds the stuff on top
+			let session_data = document.createElement("div"); //Holds the stuff on top except the name and amount of tabs
 			let session_links = document.createElement("p");
 			let session_date = document.createElement("p");
 			let session_restore = document.createElement("p");
 			let session_delete = document.createElement("p");
 			let session_name = document.createElement("input");
-			//let session_rename = document.createElement("p");
 
 			//Give classname to elements
 			session_div.className = "session";
+			session_data.className = "session-data";
 			session_header.className = "session-header";
 			session_links.className = "session-links";
 			session_date.className = "session-date";
@@ -195,14 +196,16 @@ chrome.storage.local.get({
 			session_name.value = session_sname;
 			session_name.type = 'text';
 			session_name.style.width = session_name.value.length + "ch";
+			session_name.style.marginRight = "5px";
 			//session_links.disabled = true;
 			//session_links.setAttribute('onkeypress', "this.style.width = ((this.value.length + 1) * 8) + 'px';");
 
 			session_header.appendChild(session_name);
 			session_header.appendChild(session_links);
-			session_header.appendChild(session_date);
-			session_header.appendChild(session_restore);
-			session_header.appendChild(session_delete);
+			session_header.appendChild(session_data);
+			session_data.appendChild(session_date);
+			session_data.appendChild(session_restore);
+			session_data.appendChild(session_delete);
 			// session_div.addEventListener('click', function (event) {
 			// 	console.log("clicked on current session");
 			// 	let clicked = event.target
@@ -248,15 +251,21 @@ chrome.storage.local.get({
 			// 	session_links.focus();
 			// });
 
-			session_links.addEventListener('click', function() {
+			session_links.addEventListener('click', function () {
 				session_name.focus();
-				if(session_name.value.length < 1)
-				{
+				if (session_name.value.length < 1) {
 					session_name.style.width = "1ch";
-				}					
+				}
 			})
 
-			session_restore.addEventListener('click', function () {
+			session_restore.addEventListener('click', function () {				
+				//remove from storage
+				sessions.splice(x, 1);
+				chrome.storage.local.set({
+					key: sessions
+				});
+				session_div.parentNode.removeChild(session_div)
+
 				chrome.tabs.getSelected(null, function (selected) {
 					//restore tabs		
 					for (let i = 0; i < session.length; i++) {
@@ -272,12 +281,6 @@ chrome.storage.local.get({
 					});
 				});
 
-				//remove from storage
-				sessions.splice(x, 1);
-				chrome.storage.local.set({
-					key: sessions
-				});
-				refresh()
 			});
 
 			session_delete.addEventListener('click', function () {
@@ -286,17 +289,32 @@ chrome.storage.local.get({
 				chrome.storage.local.set({
 					key: sessions
 				});
-				refresh()
+				session_div.parentNode.removeChild(session_div)
 			});
 
-			session_name.addEventListener('input', function() {
+
+			session_name.addEventListener('focusin', function () {
+				session_name.style.marginRight = '25px';
+			});
+
+			session_name.addEventListener('input', function () {
+				console.log("focused");
+				session_name.style.width = session_name.value.length + "ch";
+			})
+
+			session_name.addEventListener('keyup', function () {
+				console.log("focused");
+				session_name.style.width = session_name.value.length + "ch";
+			})
+			session_name.addEventListener('keydown', function () {
+				console.log("focused");
 				session_name.style.width = session_name.value.length + "ch";
 			})
 
 			session_name.addEventListener('focusout', function () {
 				console.log("stopped focusing")
-				if(session_name.value.length < 1)
-				{
+				session_name.style.marginRight = '5px';
+				if (session_name.value.length < 1) {
 					session_name.style.width = '0ch';
 				}
 				sessions[x][2] = session_name.value
@@ -306,7 +324,7 @@ chrome.storage.local.get({
 			})
 
 			session_name.addEventListener('keyup', function (key) {
-				if (key.code == "Enter") {					
+				if (key.code == "Enter") {
 					session_name.blur();
 				}
 			});
