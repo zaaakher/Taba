@@ -27,6 +27,9 @@ body {
 
 #container {
   margin-top: 20px;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
 }
 
 /************************** Session Styling ************************/
@@ -37,15 +40,18 @@ body {
   padding: 10px;
   /* margin-bottom: 30px; */
   /* background-color: red; */
+  margin: 20px;
+  /* max-width: 300px; */
 }
 
 .session-header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.session-links {
+.session-count {
   display: inline-block;
   font-size: 26px;
   color: rgb(119, 119, 119);
@@ -57,57 +63,16 @@ body {
   display: inline-block;
   border: none;
   color: black;
-  
-/* text-align: center; */
+
+  /* text-align: center; */
   /* color: lightgray; */
   /* width: 100px; */
   font-weight: lighter;
   font-size: 26px;
   /* color: gray; */
-  
+
   /* padding: .5em; */
   /* margin-right: 25px; */
-}
-
-/************************** Links Styling ************************/
-
-.link {
-  font-size: 13px;
-  /* font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; */
-  /* padding-top: 15px; */
-  color: #234da7;
-  font-weight: 400;
-  padding-left: 5px;
-  cursor: pointer;
-}
-
-.link-base {
-  display: flex;
-  align-items: center;
-  /* background-color: blue; */
-  height: 10px;
-}
-
-.link-main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  /* background-color: yellow; */
-  /* width: 100px; */
-  /* margin-bottom: 10px; */
-  padding-left: 10px;
-  /* border: solid black 1px; */
-  /* padding: 10px; */
-  /* margin: 10px; */
-  /* justify-content: center; */
-}
-
-.remove-button {
-  color: gray;
-  /* position: absolute; */
-  /* right: 99.35%; */
-  margin-right: 10px;
 }
 
 .session-data {
@@ -115,7 +80,6 @@ body {
   padding-left: 28px;
   vertical-align: middle;
   font-size: 0px;
-
 }
 
 .session-date {
@@ -142,10 +106,52 @@ body {
   font-weight: 400;
   cursor: pointer;
   padding-right: 30px;
-  
 }
 
+/************************** Links Styling ************************/
 
+.link {
+  font-size: 13px;
+  /* font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; */
+  /* padding-top: 15px; */
+  color: #234da7;
+  font-weight: 400;
+  padding-left: 5px;
+  cursor: pointer;
+  /* word-wrap: normal;
+  text-overflow: clip;
+  white-space: normal; */
+}
+
+.link-base {
+  display: flex;
+  align-items: center;
+  /* background-color: blue; */
+  /* height: 10px; */
+}
+
+.link-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  /* background-color: yellow; */
+  /* width: 100px; */
+  /* margin-bottom: 10px; */
+  padding-left: 10px;
+  /* border: solid black 1px; */
+  /* padding: 10px; */
+  /* margin: 10px; */
+  /* justify-content: center; */
+}
+
+.remove-button {
+  color: gray;
+  /* position: absolute; */
+  /* right: 99.35%; */
+  cursor: pointer;
+  margin-right: 10px;
+}
 
 /* Extend to left */
 /* Match height of .link-base */
